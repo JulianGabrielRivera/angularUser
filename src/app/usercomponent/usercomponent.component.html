@@ -1,0 +1,28 @@
+<p>usercomponent works!</p>
+<div class="flex">
+<h1>User Details</h1>
+<input type="text" [(ngModel)]="name" (keyup.enter)="keyUpName($event)"  >
+<input type="text" [(ngModel)]="email" (keyup.enter)="keyUpEmail($event)">
+<textarea placeholder="Address" [(ngModel)]="address" (keyup.enter)="keyUpAddress($event)"></textarea>
+<button (click)="saveUserInfo()">Save Data</button>
+
+<table>
+    <tr>
+        <td>#</td>
+        <td>Name</td>
+        <td>Email</td>
+        <td>Address</td>
+        <td>Action</td>
+         
+        </tr>
+    <tr *ngFor="let user of usersArray; let i =index">
+        <th>#</th>
+      <th>{{user.name}}</th>
+      <th>{{user.email}}</th>
+      <th>{{user.address}}</th>
+     
+    </tr>
+  
+  
+  </table>
+</div>
