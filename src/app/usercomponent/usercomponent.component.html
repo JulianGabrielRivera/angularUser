@@ -1,28 +1,37 @@
 <p>usercomponent works!</p>
-<div class="flex">
+<div class="flex flex-col h-screen">
 <h1>User Details</h1>
-<input type="text" [(ngModel)]="name" (keyup.enter)="keyUpName($event)"  >
-<input type="text" [(ngModel)]="email" (keyup.enter)="keyUpEmail($event)">
-<textarea placeholder="Address" [(ngModel)]="address" (keyup.enter)="keyUpAddress($event)"></textarea>
-<button (click)="saveUserInfo()">Save Data</button>
+<!-- ngmodel for binding -->
+<input type="text" [(ngModel)]="name"  class="w-2/5"  >
+<input type="text" [(ngModel)]="email"  class="w-2/5">
+<textarea placeholder="Address" [(ngModel)]="address"  class="w-2/5"></textarea>
+<button (click)="saveUserInfo()" class="w-1/6">Save Data</button>
 
-<table>
-    <tr>
-        <td>#</td>
-        <td>Name</td>
-        <td>Email</td>
-        <td>Address</td>
-        <td>Action</td>
-         
+<div *ngIf="usersArray.length >0; else noUsers">
+
+    <table class="w-3/6">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+             
+            </tr>
+        <tr *ngFor="let user of usersArray; let i =index" >
+       <td > {{i+1}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.address}}</td>
+         <td><button (click)="deleteUser(user)">Delete</button></td>
         </tr>
-    <tr *ngFor="let user of usersArray; let i =index">
-        <th>#</th>
-      <th>{{user.name}}</th>
-      <th>{{user.email}}</th>
-      <th>{{user.address}}</th>
-     
-    </tr>
-  
-  
-  </table>
+      
+      
+      </table>
+</div>
+<!-- template verification/ table is nousers that we can use up top on our structural directive to display if no users -->
+<ng-template #noUsers>
+<p>There are no users in the database</p>
+</ng-template>
+
 </div>

@@ -19,13 +19,18 @@ saveUserInfo(){
   this.usersArray.push({name: this.name, email: this.email, address: this.address})
   console.log(this.usersArray)
 }
-keyUpName($event:any){
-  this.name=$event.target.value;
+deleteUser(user:any){
+  //  since we have the index when looping in the html page we can also just straight up pass it the index and splice it, up to you.
+  let index = this.usersArray.indexOf(user)
+  this.usersArray.splice(index,1)
 }
-keyUpEmail($event:any){
-  this.email=$event.target.value;
-}
-keyUpAddress($event:any){
-  this.address=$event.target.value;
-}
+// keyUpName($event:any){
+//   this.name=$event.target.value;
+// }
+// keyUpEmail($event:any){
+//   this.email=$event.target.value;
+// }
+// keyUpAddress($event:any){
+//   this.address=$event.target.value;
+// }
 }
